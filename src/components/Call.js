@@ -14,7 +14,8 @@ export default class Call extends Component {
   });
 
   state = {
-    remoteStreams: []
+    remoteStreams: [],
+    isMuted: false
   };
 
   componentDidMount() {
@@ -62,7 +63,25 @@ export default class Call extends Component {
     client.on("stream-removed", me.onStreamRemoved);
 
     client.on("peer-leave", me.onPeerLeave);
+
+    client.on("peer-leave", me.onPeerLeave);
   };
+
+  onMuteVideo = (e) => {
+    let me = this;
+    me.localStream.muteVideo("agora_local");
+    me.setState({
+      isMuted: true
+    })
+  }
+
+  onUnMuteVideo = (e) => {
+    let me = this;
+    me.localStream.unmuteVideo("agora_local");
+    me.setState({
+      isMuted: false
+    })
+  }
 
   onStreamAdded = evt => {
     let me = this;
@@ -162,6 +181,8 @@ export default class Call extends Component {
             />
           );
         })}
+            {this.state.isMuted ? <button onClick={this.onUnMuteVideo}>Resume</button> : <button onClick={this.onMuteVideo}>Pause</button>}
+            
       </div>
     );
   }

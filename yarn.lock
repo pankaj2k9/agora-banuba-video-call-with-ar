@@ -1436,10 +1436,10 @@ address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
   integrity sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA==
 
-agora-rtc-sdk@^2.5.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/agora-rtc-sdk/-/agora-rtc-sdk-2.9.0.tgz#e94ce100c67b16b9e3919ff314995daf6e4e5359"
-  integrity sha512-91YDkMfIXTGdbuBicqf0VjCnaeYyRa1FXbJqpuOq/0Cq0kZ7+98980bLbKvdvhXgOVaYkYzBp9jAqmduKf4z5Q==
+agora-rtc-sdk@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/agora-rtc-sdk/-/agora-rtc-sdk-3.1.2.tgz#2d642c3d2610dc4bb7c90cb3024007fc946d0227"
+  integrity sha512-HFGKX+Hs0p+6MG0PiseA3nX4+5Xp9F2QaJ6KfdqdITII1hDJPJaZPyiA/ZczYsDsbSbFm9mYpEtPMBpv+zWcqg==
 
 ajv-errors@^1.0.0:
   version "1.0.1"
