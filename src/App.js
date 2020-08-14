@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './App.css';
 import ChannelForm from "./components/ChannelForm";
 import Call from "./components/Call";
 
