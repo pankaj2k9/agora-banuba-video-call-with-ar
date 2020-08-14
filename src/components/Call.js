@@ -55,16 +55,54 @@ export default class Call extends Component {
     this.subscribeToClient();
   };
 
+
+  joinBabies = () => {
+    let me = this;
+    client.join(
+      null,
+      me.props.channel,
+      Math.floor(Math.random() * 1000000021),
+      function(uid) {
+        client.publish(me.localStream, function(err) {
+          console.log("Publish local stream error: " + err);
+        });
+
+        client.on("stream-published", function(evt) {
+          console.log("Publish local stream successfully");
+        });
+      },
+      function(err) {
+        console.log("Join channel failed", err);
+      }
+    );
+    client.join(
+      null,
+      me.props.channel,
+      Math.floor(Math.random() * 1000000011),
+      function(uid) {
+        client.publish(me.localStream, function(err) {
+          console.log("Publish local stream error: " + err);
+        });
+
+        client.on("stream-published", function(evt) {
+          console.log("Publish local stream successfully");
+        });
+      },
+      function(err) {
+        console.log("Join channel failed", err);
+      }
+    );
+  }
+
   subscribeToClient = () => {
     let me = this;
     client.on("stream-added", me.onStreamAdded);
     client.on("stream-subscribed", me.onRemoteClientAdded);
-
     client.on("stream-removed", me.onStreamRemoved);
 
     client.on("peer-leave", me.onPeerLeave);
+   
 
-    client.on("peer-leave", me.onPeerLeave);
   };
 
   onMuteVideo = (e) => {
@@ -111,7 +149,6 @@ export default class Call extends Component {
       me.props.channel,
       USER_ID,
       function(uid) {
-        console.log("User " + uid + " join channel successfully");
         client.publish(me.localStream, function(err) {
           console.log("Publish local stream error: " + err);
         });
@@ -126,9 +163,11 @@ export default class Call extends Component {
     );
   };
 
+
   onRemoteClientAdded = evt => {
     let me = this;
     let remoteStream = evt.stream;
+    me.joinBabies();
     me.state.remoteStreams[remoteStream.getId()].play(
       "agora_remote " + remoteStream.getId()
     );
@@ -167,6 +206,7 @@ export default class Call extends Component {
   };
 
   render() {
+    console.log("pankaj", this.state.remoteStreams);
     return (
       <div>
         <div id="agora_local" style={{ width: "400px", height: "400px" }} />
