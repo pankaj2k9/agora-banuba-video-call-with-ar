@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AgoraRTC from 'agora-rtc-sdk';
+import ReactPlayer from 'react-player'
 let client = AgoraRTC.createClient({ mode: 'live', codec: 'h264' });
 
 const USER_ID = Math.floor(Math.random() * 1000000001);
@@ -122,8 +123,6 @@ export default class Call extends Component {
   onStreamAdded = (evt) => {
     let me = this;
     let stream = evt.stream;
-    console.log('New stream added: ' + stream.getId());
-    console.log('------------------------------------');
     me.setState(
       {
         remoteStreams: {
@@ -220,6 +219,9 @@ export default class Call extends Component {
               />
             );
           })}
+          <ReactPlayer playing url={require('../videos/Video1.mp4')}  />
+          <ReactPlayer playing url={require('../videos/Video2.mp4')} />
+          <ReactPlayer playing url={require('../videos/Video3.mp4')} />
         </div>
         {this.state.isMuted ? (
           <button onClick={this.onUnMuteVideo}>Resume</button>
